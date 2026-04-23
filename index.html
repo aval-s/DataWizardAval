@@ -1,139 +1,1123 @@
 <!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Avalvir Sekhon Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<html lang="en">
+<head>
+  <title>Avalvir Sekhon — Data Scientist</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #111118;
+      --surface: #1a1a26;
+      --surface2: #22223a;
+      --accent: #ff6b6b;
+      --accent2: #ffd93d;
+      --accent3: #6bcb77;
+      --accent4: #4d96ff;
+      --text: #f0eeff;
+      --muted: #888899;
+      --border: rgba(255,255,255,0.08);
+    }
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>This is<br />
-						Avalvir Sekhon</h1>
-						<p>Data Magician: Crafting Insights with Style and Precision</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+    html { scroll-behavior: smooth; }
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Data Wizard Aval</a>
-					</header>
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: none;
+    }
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a>Portfolio</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/avalvir-kaur-sekhon/" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
-							<li><a href="https://github.com/aval-s" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+    /* Custom cursor */
+    .cursor {
+      width: 12px; height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.15s ease, background 0.2s;
+      mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--accent2);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transition: transform 0.3s ease, width 0.2s, height 0.2s;
+      mix-blend-mode: difference;
+    }
 
-					
-				<!-- Main -->
-					<div id="main">
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.6;
+    }
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<!-- Blockquote -->
-									<h1  style="color: grey;" > Work experience</h1>
-									<hr />
-									<h3>Forecast Analyst</h3>
-									<p> Arctic Glacier Canada Inc.</p>
-									<span class="date">June 2022 - Dec 2023</span>
-									<p>I took on the role of a forecasting hero. I crafted a smart demand predicting system that slashed commercial and retail spending by a whopping 25%. Using simple machine learning tricks, I built a smooth model system from scratch, ensuring our predictions hit the mark. But that's not all! I also delved into our data, uncovering hidden treasures and fine-tuning our approach. Working alongside my fantastic team, we used our tech know-how to hit our big targets and turn budget planning into a success story. Armed with my forecasting skills and a dash of teamwork, I turned budget blues into an epic win.</p>
+    /* ——— NAV ——— */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(10,10,15,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
 
-									<h3>Data Scientist</h3>
-									<p> Black Eye Technologies</p>
-									<span class="date">June 2018 - Dec 2020</span>
-									<p>Imagine diving into the world of image classification like a boss. With a sprinkle of magic, I streamlined deployment pipelines, cutting time by a staggering 40%. But that's not all - I also got creative with data visualization, whipping up interactive BI dashboards that made data more accessible and fun. The result? A big boost in user engagement and faster decision-making, all thanks to my handy work. And you know what kept me going? My thirst for knowledge!</p>
+    /* ——— HERO ——— */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
 
-								</header>
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,107,107,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,107,107,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+    }
 
-						<!-- Posts -->
-							<section class="posts">
-								<!-- Blockquote -->
-								<h1 style="color: grey;" > Projects</h1>
-								<hr />
-									<header>
-										<h2><a href="https://github.com/aval-s/ENERGY-CONSUMPTION-PREDICTION">ENERGY CONSUMPTION PREDICTION</a></h2>
-									</header>
-									<a href="https://github.com/aval-s/ENERGY-CONSUMPTION-PREDICTION" class="image fit"><img src="images/energy.webp" alt="" /></a>
-									<p>In the realm of energy management, I've mastered the art of prediction. Picture this: using ML algorithms, I've unlocked the secret to forecasting commercial building energy consumption with a jaw-dropping 87% accuracy, leaving the competition in awe. But I didn't stop there. I brought the data to life using Tableau, crafting captivating visuals that turn numbers into actionable insights. It's not just about crunching numbers; it's about writing the story of efficiency and innovation, one algorithm at a time.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Github</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2><a href="https://github.com/aval-s/PREDICTING-PEDIATRIC-SLEEP-PATTERNS">PREDICTING PEDIATRIC SLEEP PATTERNS </a></h2>
-									</header>
-									<a href="https://github.com/aval-s/PREDICTING-PEDIATRIC-SLEEP-PATTERNS" class="image fit"><img src="images/baby.jpeg" alt="" /></a>
-									<p>In the world of data handling, I've set up pipelines to make sense of complex information. I've taken PhysioNet data, cleaned it up, and made sure everything's in order with the proper permissions. Then, using a decision tree regressor model, I dug into sleep patterns, predicting with remarkable accuracy at 93.86%. It's about turning data into real insights that make a difference.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Github</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2><a href="https://github.com/aval-s/Underground-Water-Level-Prediction">UNDERGROUND WATER LEVEL PREDICTION USING TIME SERIES FORECASTING</a></h2>
-									</header>
-									<a href="https://github.com/aval-s/Underground-Water-Level-Prediction" class="image fit"><img src="images/well.jpeg" alt="" /></a>
-									<p>In my work with water resources, I've tapped into some pretty sophisticated tools – ARIMA and SARIMA models – to predict underground water levels. But it's not all about fancy algorithms; I've also dug deep into the data with both single and double-variable analyses to really understand what's going on. Using tools like seaborn and matplotlib, I've painted a clear picture of the trends and patterns hidden within. And because I believe in looking ahead, I've built a solid predictive model spanning five years into the future. Oh, and to make it all user-friendly, I've whipped up a simple interface using Tkinter. Because when it comes to managing water, accessibility is key.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Github</a></li>
-									</ul>
-								</article>
-								
-							</section>
-					</div>
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .orb1 { width: 500px; height: 500px; background: rgba(255,107,107,0.12); top: -100px; right: -100px; animation: drift1 12s ease-in-out infinite; }
+    .orb2 { width: 400px; height: 400px; background: rgba(77,150,255,0.1); bottom: 0; left: -80px; animation: drift2 15s ease-in-out infinite; }
+    .orb3 { width: 300px; height: 300px; background: rgba(255,217,61,0.08); top: 50%; right: 20%; animation: drift1 10s ease-in-out infinite reverse; }
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>Toronto, Ontario, Canada</p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="mailto:avalsekhon@outlook.com">avalsekhon@outlook.com</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="https://www.linkedin.com/in/avalvir-kaur-sekhon/" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
-									<li><a href="https://github.com/aval-s" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+    @keyframes drift1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(30px, -40px); } }
+    @keyframes drift2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-20px, 30px); } }
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Avalvir Sekhon Portfolio</li></ul>
-					</div>
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
 
-			</div>
+    h1.hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    h1.hero-name .line2 {
+      display: block;
+      -webkit-text-stroke: 1.5px var(--accent);
+      color: transparent;
+    }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    .hero-tagline {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-top: 2rem;
+      max-width: 520px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-tagline em { color: var(--accent2); font-style: normal; font-weight: 500; }
 
-	</body>
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2.5rem;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .chip {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .chip:hover { border-color: var(--accent); color: var(--accent); background: rgba(255,107,107,0.08); }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 3rem;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+    .btn {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0a0f;
+      font-weight: 700;
+    }
+    .btn-primary:hover { background: #ff4757; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,107,107,0.3); }
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); transform: translateY(-2px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem; left: 3rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      animation: fadeIn 1.5s 1s ease both;
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--muted);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine { 0%,100% { transform: scaleX(1); } 50% { transform: scaleX(0.4); transform-origin: left; } }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ——— SECTIONS ——— */
+    section {
+      padding: 6rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h2.section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    /* ——— ABOUT / SUMMARY ——— */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      border-top: 1px solid var(--border);
+    }
+    .about-text p {
+      color: var(--muted);
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .stat-box {
+      background: var(--surface);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: background 0.2s;
+    }
+    .stat-box:hover { background: var(--surface2); }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .stat-num.red { color: var(--accent); }
+    .stat-num.yellow { color: var(--accent2); }
+    .stat-num.green { color: var(--accent3); }
+    .stat-num.blue { color: var(--accent4); }
+    .stat-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ——— EXPERIENCE ——— */
+    #experience { border-top: 1px solid var(--border); }
+
+    .exp-list { display: flex; flex-direction: column; gap: 0px; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      transition: all 0.3s;
+    }
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 0;
+      background: linear-gradient(transparent, rgba(255,107,107,0.03), transparent);
+      transition: width 0.4s;
+    }
+    .exp-item:hover::before { width: 100%; }
+
+    .exp-meta { padding-top: 0.3rem; }
+    .exp-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .exp-company {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 0.8rem;
+      line-height: 1.3;
+    }
+
+    .exp-content {}
+    .exp-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .exp-role .role-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .exp-bullets li {
+      font-size: 0.92rem;
+      color: var(--muted);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.6;
+    }
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+    .exp-bullets li strong { color: var(--text); font-weight: 500; }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+    }
+    .exp-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      background: var(--surface2);
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ——— PROJECTS ——— */
+    #projects { border-top: 1px solid var(--border); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      transition: all 0.3s;
+      cursor: none;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .project-card.red-glow::before { background: radial-gradient(ellipse at top left, rgba(255,107,107,0.1), transparent 70%); }
+    .project-card.blue-glow::before { background: radial-gradient(ellipse at top left, rgba(77,150,255,0.1), transparent 70%); }
+    .project-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.15); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1;
+      opacity: 0.06;
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+    }
+
+    .project-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .project-icon.red { background: rgba(255,107,107,0.15); }
+    .project-icon.blue { background: rgba(77,150,255,0.15); }
+
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .project-desc strong { color: var(--accent2); font-weight: 500; }
+
+    .project-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .project-highlight {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .project-highlight .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+    .project-highlight .dot.red { background: var(--accent); }
+    .project-highlight .dot.blue { background: var(--accent4); }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .project-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      background: var(--surface2);
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .project-arrow {
+      font-size: 1.2rem;
+      color: var(--muted);
+      transition: color 0.2s, transform 0.2s;
+    }
+    .project-card:hover .project-arrow { color: var(--accent); transform: translate(3px, -3px); }
+
+    /* featured card spans full width */
+    .project-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 3rem;
+    }
+    .project-card.featured .project-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .project-card.featured .project-num { font-size: 7rem; top: auto; bottom: 1rem; right: 1rem; }
+
+    .accuracy-bar {
+      background: var(--surface2);
+      border-radius: 100px;
+      height: 6px;
+      overflow: hidden;
+      margin-top: 0.2rem;
+    }
+    .accuracy-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--accent4), var(--accent3));
+      animation: fillBar 1.5s ease-out both;
+    }
+    @keyframes fillBar { from { width: 0 !important; } }
+
+    .model-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .model-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+    }
+    .model-name span { color: var(--accent3); }
+
+    /* ——— SKILLS ——— */
+    #skills { border-top: 1px solid var(--border); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .skill-group {
+      background: var(--surface);
+      padding: 2rem;
+      transition: background 0.2s;
+    }
+    .skill-group:hover { background: var(--surface2); }
+    .skill-group-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .skill-group-title::before {
+      content: '';
+      display: block;
+      width: 8px; height: 8px;
+      border-radius: 2px;
+    }
+    .sg-ml .skill-group-title::before { background: var(--accent); }
+    .sg-cloud .skill-group-title::before { background: var(--accent4); }
+    .sg-tools .skill-group-title::before { background: var(--accent2); }
+    .sg-prog .skill-group-title::before { background: var(--accent3); }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .skill-list li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-left: 0.8rem;
+      border-left: 2px solid var(--border);
+      transition: all 0.2s;
+    }
+    .sg-ml .skill-list li:hover { color: var(--accent); border-color: var(--accent); }
+    .sg-cloud .skill-list li:hover { color: var(--accent4); border-color: var(--accent4); }
+    .sg-tools .skill-list li:hover { color: var(--accent2); border-color: var(--accent2); }
+    .sg-prog .skill-list li:hover { color: var(--accent3); border-color: var(--accent3); }
+
+    /* ——— EDUCATION ——— */
+    #education { border-top: 1px solid var(--border); }
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .edu-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .edu-card.ubc::after { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+    .edu-card.ptu::after { background: linear-gradient(90deg, var(--accent4), var(--accent3)); }
+    .edu-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.12); }
+
+    .edu-degree {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .edu-school {
+      color: var(--accent2);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .edu-card.ptu .edu-school { color: var(--accent4); }
+    .edu-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 0.8rem;
+    }
+
+    /* ——— CONTACT ——— */
+    #contact {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 6rem 3rem;
+    }
+    #contact h2 { margin-bottom: 1rem; }
+    #contact p { color: var(--muted); max-width: 480px; margin: 0 auto 2.5rem; }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .contact-link {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      text-decoration: none;
+      padding: 0.9rem 1.8rem;
+      border-radius: 8px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .contact-link:hover { border-color: var(--accent2); color: var(--accent2); transform: translateY(-2px); background: rgba(255,217,61,0.05); }
+    .contact-link.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 700; }
+    .contact-link.primary:hover { background: #ff4757; border-color: #ff4757; color: var(--bg); box-shadow: 0 10px 30px rgba(255,107,107,0.3); }
+
+    /* ——— FOOTER ——— */
+    footer {
+      text-align: center;
+      padding: 2rem 3rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ——— SCROLL ANIMATIONS ——— */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 7rem 1.5rem 4rem; }
+      #about { grid-template-columns: 1fr; gap: 3rem; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <a href="#" class="nav-logo">Aval.dev</a>
+    <ul class="nav-links">
+      <!-- <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li> -->
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <div class="hero-orb orb3"></div>
+
+    <div class="hero-eyebrow">Data Scientist &amp; ML Engineer</div>
+    <h1 class="hero-name">
+      Avalvir<br>
+      <span class="line2">Sekhon</span>
+    </h1>
+    <p class="hero-tagline">
+      I build systems that <em>learn, predict, and generate</em> —
+      from RAG pipelines to fine-tuned vision models to time-series forecasts.
+    </p>
+    <div class="hero-chips">
+      <span class="chip">LLMs &amp; RAG</span>
+      <span class="chip">Computer Vision</span>
+      <span class="chip">NLP</span>
+      <span class="chip">Time Series</span>
+      <span class="chip">Python · R</span>
+      <span class="chip">GCP · Azure</span>
+      <span class="chip">MDS @ UBC</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="https://www.linkedin.com/in/avalvir-kaur-sekhon/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+    </div>
+
+    <div class="hero-scroll">Scroll to explore</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="reveal">
+    <div class="about-text">
+      <div class="section-label">About me</div>
+      <h2 class="section-title">Turning messy<br>data into decisions</h2>
+      <p>I'm a <strong>Data Scientist</strong> with 6+ years of experience building ML systems across publishing, agriculture, and forecasting. Currently finishing my <strong>Master of Data Science</strong> at UBC.</p>
+      <p>My sweet spot is end-to-end work — from raw data wrangling to deployed, production-grade models. I've shipped RAG systems, crop disease detectors, demand forecasters, and most recently, a comparative fine-tuning study on vision transformers.</p>
+      <p>Open to roles across Canada.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-box">
+        <div class="stat-num red">6+</div>
+        <div class="stat-label">Years Industry Experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num yellow">3</div>
+        <div class="stat-label">Companies shipped at</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num green">85.6%</div>
+        <div class="stat-label">ViT accuracy, Food-101</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num blue">MDS</div>
+        <div class="stat-label">UBC Graduate 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">Work history</div>
+    <h2 class="section-title">Experience</h2>
+
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">Dec 2023 – Aug 2025</div>
+          <div class="exp-company">Doaba Publications</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">
+            <div class="role-dot" style="background:var(--accent)"></div>
+            Data Scientist
+          </div>
+          <ul class="exp-bullets">
+            <li>Built a <strong>RAG system</strong> integrating retrieval with GPT-family models — boosted response accuracy and customer satisfaction by <strong>20%</strong></li>
+            <li>Developed an NLP <strong>Content Recommendation System</strong> with BERT, NER, topic modeling &amp; semantic similarity; deployed on GCP with real-time updates — <strong>25% lift in reader retention</strong></li>
+            <li>Created a <strong>Text Summarization tool</strong> using Seq2Seq &amp; Transformer architectures achieving <strong>30% reduction in reading time</strong></li>
+            <li>Managed multi-cloud deployment with Docker on GCP; streamlined ETL pipelines via SQL stored procedures</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">RAG</span><span class="exp-tag">LLMs</span><span class="exp-tag">BERT</span>
+            <span class="exp-tag">GCP</span><span class="exp-tag">Docker</span><span class="exp-tag">LangChain</span><span class="exp-tag">HuggingFace</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">Jun 2022 – Dec 2023</div>
+          <div class="exp-company">Arctic Glacier Canada Inc.</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">
+            <div class="role-dot" style="background:var(--accent2)"></div>
+            Forecast Analyst (Data Scientist)
+          </div>
+          <ul class="exp-bullets">
+            <li>Deployed time-series forecasting system (ARIMA, Prophet, LSTM) for weekly/monthly demand — <strong>23% improvement over baseline</strong></li>
+            <li>Ran end-to-end EDA &amp; feature engineering pipeline — <strong>20% improvement in model accuracy</strong></li>
+            <li>Built interactive <strong>Tableau dashboards</strong> for forecasted trends, directly supporting budget planning decisions</li>
+            <li>Managed data migration from AWS → Azure Databricks; version-controlled ML workflows with Git/GitHub</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">ARIMA</span><span class="exp-tag">LSTM</span><span class="exp-tag">Prophet</span>
+            <span class="exp-tag">Tableau</span><span class="exp-tag">Power BI</span><span class="exp-tag">Azure</span><span class="exp-tag">SQL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">Jan 2019 – May 2022</div>
+          <div class="exp-company">Black Eye Technologies</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">
+            <div class="role-dot" style="background:var(--accent4)"></div>
+            Data Scientist
+          </div>
+          <ul class="exp-bullets">
+            <li>Digitized agricultural records with <strong>OCR + NER</strong> (spaCy); built preprocessing pipelines in Python/Pandas</li>
+            <li>Developed a <strong>CNN-based crop disease detection system</strong> (TensorFlow) — <strong>20% accuracy improvement</strong> over traditional methods, with real-time diagnosis interface for farmers</li>
+            <li>Monitored model performance with continuous feedback loops; collaborated with domain experts on feature selection</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">CNN</span><span class="exp-tag">TensorFlow</span><span class="exp-tag">OCR</span>
+            <span class="exp-tag">spaCy</span><span class="exp-tag">Power BI</span><span class="exp-tag">Computer Vision</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">Selected work</div>
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-grid">
+
+      <!-- FEATURED: Food-101 fine-tuning -->
+      <a class="project-card featured blue-glow reveal" href="https://github.com/aval-s/fine-tuning_Food101" target="_blank">
+        <div class="project-left">
+          <div class="project-icon blue">🍔</div>
+          <div class="project-title" style="font-size:1.6rem; margin-top:1rem;">Fine-Tuning Showdown:<br>Food-101 Vision Models</div>
+          <div class="project-desc">
+            A collaborative deep learning study with teammates Zaed and Zihuan comparing fine-tuning strategies across <strong>ResNet-18, EfficientNetV2-S, and ViT</strong> on the Food-101 dataset (101 classes, 100K images). The goal: find what actually works when you can't retrain the whole model.
+          </div>
+          <div class="project-highlights">
+            <div class="project-highlight"><div class="dot blue"></div> ViT with LayerNorm tuning: 85.6% accuracy training only 58K params</div>
+            <div class="project-highlight"><div class="dot blue"></div> Tested blur, noise, occlusion &amp; downsampled inputs for real-world robustness</div>
+            <div class="project-highlight"><div class="dot blue"></div> Grad-CAM heatmaps revealed how each strategy attends spatially — stunning</div>
+            <div class="project-highlight"><div class="dot blue"></div> LoRA on the head alone? Struggled on all 3 architectures for 101 classes</div>
+          </div>
+          <div class="project-tags" style="margin-top:1rem;">
+            <span class="project-tag">ViT</span><span class="project-tag">ResNet-18</span>
+            <span class="project-tag">EfficientNet</span><span class="project-tag">LoRA</span>
+            <span class="project-tag">Grad-CAM</span><span class="project-tag">PyTorch</span>
+          </div>
+        </div>
+        <div class="project-right">
+          <div class="project-num">01</div>
+          <div style="background:var(--surface2); border-radius:12px; padding:1.5rem; margin-top:1rem;">
+            <div style="font-family:'Space Mono',monospace; font-size:0.7rem; color:var(--muted); margin-bottom:1rem; text-transform:uppercase; letter-spacing:0.1em;">Model Accuracy Comparison</div>
+            <div class="model-row">
+              <div class="model-name">ViT (LayerNorm) <span>85.6%</span></div>
+              <div class="accuracy-bar"><div class="accuracy-fill" style="width:85.6%"></div></div>
+            </div>
+            <div style="height:0.8rem"></div>
+            <div class="model-row">
+              <div class="model-name" style="color:var(--muted)">EfficientNetV2-S <span style="color:var(--muted)">—</span></div>
+              <div class="accuracy-bar"><div class="accuracy-fill" style="width:72%; background: linear-gradient(90deg, var(--accent), var(--accent2));"></div></div>
+            </div>
+            <div style="height:0.8rem"></div>
+            <div class="model-row">
+              <div class="model-name" style="color:var(--muted)">ResNet-18 <span style="color:var(--muted)">—</span></div>
+              <div class="accuracy-bar"><div class="accuracy-fill" style="width:61%; background: linear-gradient(90deg, var(--accent2), var(--accent));"></div></div>
+            </div>
+            <div style="height:0.8rem"></div>
+            <div class="model-row">
+              <div class="model-name" style="color:var(--muted); font-size:0.65rem">LoRA (all 3 models) <span style="color:var(--accent)">struggled</span></div>
+              <div class="accuracy-bar"><div class="accuracy-fill" style="width:42%; background: linear-gradient(90deg, #444, var(--accent));"></div></div>
+            </div>
+          </div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--muted); margin-top:1rem; line-height:1.6;">
+            Built with Zaed &amp; Zihuan · Full notebook + Grad-CAM visualizations on GitHub
+          </div>
+          <div class="project-arrow" style="margin-top:auto;">↗</div>
+        </div>
+      </a>
+
+      <!-- Water Level -->
+      <a class="project-card red-glow reveal" href="https://github.com/aval-s/Underground-Water-Level-Prediction" target="_blank">
+        <div class="project-num">02</div>
+        <div class="project-icon red">💧</div>
+        <div class="project-title">Underground Water Level Prediction</div>
+        <div class="project-desc">
+          Time series forecasting model (ARIMA, SARIMA) predicting underground water levels with a <strong>5-year forecast horizon</strong>. Extensive preprocessing, single &amp; double-variable analyses, and a user-friendly Tkinter interface.
+        </div>
+        <div class="project-highlights">
+          <div class="project-highlight"><div class="dot red"></div> ARIMA &amp; SARIMA with seaborn/matplotlib visualizations</div>
+          <div class="project-highlight"><div class="dot red"></div> 5-year predictive model with Tkinter UI for accessibility</div>
+          <div class="project-highlight"><div class="dot red"></div> Single &amp; double-variable trend analysis</div>
+        </div>
+        <div class="project-footer">
+          <div class="project-tags">
+            <span class="project-tag">Python</span><span class="project-tag">ARIMA</span><span class="project-tag">SARIMA</span><span class="project-tag">Tkinter</span>
+          </div>
+          <div class="project-arrow">↗</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">Technical stack</div>
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills-grid" style="margin-top:2rem;">
+      <div class="skill-group sg-ml reveal">
+        <div class="skill-group-title">ML &amp; AI</div>
+        <ul class="skill-list">
+          <li>Large Language Models (GPT, BERT)</li>
+          <li>RAG &amp; LangChain / LlamaIndex</li>
+          <li>CNNs, RNNs, LSTMs, ViT</li>
+          <li>NLP &amp; Transformers</li>
+          <li>Computer Vision</li>
+          <li>Time Series Forecasting</li>
+          <li>Recommendation Systems</li>
+          <li>XGBoost, Random Forest</li>
+        </ul>
+      </div>
+      <div class="skill-group sg-cloud reveal">
+        <div class="skill-group-title">Cloud &amp; MLOps</div>
+        <ul class="skill-list">
+          <li>GCP (BigQuery, Cloud Run)</li>
+          <li>Azure Databricks</li>
+          <li>AWS</li>
+          <li>Docker &amp; OpenShift</li>
+          <li>Git / GitHub</li>
+          <li>MLOps pipelines</li>
+        </ul>
+      </div>
+      <div class="skill-group sg-tools reveal">
+        <div class="skill-group-title">Data &amp; Viz</div>
+        <ul class="skill-list">
+          <li>SQL &amp; ETL processes</li>
+          <li>Tableau</li>
+          <li>Power BI</li>
+          <li>Matplotlib, Seaborn</li>
+          <li>Pandas, NumPy</li>
+          <li>Scikit-learn, Keras</li>
+        </ul>
+      </div>
+      <div class="skill-group sg-prog reveal">
+        <div class="skill-group-title">Languages</div>
+        <ul class="skill-list">
+          <li>Python</li>
+          <li>R</li>
+          <li>C / C++</li>
+          <li>SQL</li>
+          <li>Linux / Bash</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-label">Academic background</div>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card ubc reveal">
+        <div class="edu-degree">Master of Data Science</div>
+        <div class="edu-school">University of British Columbia</div>
+        <div class="edu-date">Sept 2025 – June 2026</div>
+        <p style="font-size:0.88rem; color:var(--muted); margin-top:1rem; line-height:1.6;">Coursework in Bayesian statistics, machine learning, data visualization, and advanced statistical modeling.</p>
+      </div>
+      <div class="edu-card ptu reveal">
+        <div class="edu-degree">Bachelor of Science — Computer Science</div>
+        <div class="edu-school">Punjab Technical University</div>
+        <div class="edu-date">Jan 2015 – Nov 2018</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="reveal">
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title">Let's work<br>together</h2>
+    <p>Open to Data Scientist roles across Canada. Always happy to talk about ML, NLP, or fine-tuning strategies that actually work.</p>
+    <div class="contact-links">
+      <a href="mailto:avaksekhon@gmail.com" class="contact-link primary">✉ avaksekhon@gmail.com</a>
+      <a href="https://www.linkedin.com/in/aval-s/" target="_blank" class="contact-link">LinkedIn ↗</a>
+      <a href="https://github.com/aval-s" target="_blank" class="contact-link">GitHub ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Avalvir Kaur Sekhon · Built with intention, not a template</p>
+  </footer>
+
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx - 6 + 'px';
+      cursor.style.top = my - 6 + 'px';
+    });
+    function animRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx - 18 + 'px';
+      ring.style.top = ry - 18 + 'px';
+      requestAnimationFrame(animRing);
+    }
+    animRing();
+    document.querySelectorAll('a, button, .chip').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2)'; ring.style.transform = 'scale(1.5)'; });
+      el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; ring.style.transform = 'scale(1)'; });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
 </html>
