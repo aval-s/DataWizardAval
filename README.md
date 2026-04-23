@@ -2,7 +2,7 @@
 
 Personal portfolio website for **Avalvir Kaur Sekhon**, Data Scientist & ML Engineer.
 
-🌐 **Live site:** [aval-s.github.io](https://aval-s.github.io)
+🌐 **Live site:** [aval-s.github.io](https://aval-s.github.io/DataWizardAval/)
 
 ---
 
@@ -45,5 +45,5 @@ Time series forecasting model predicting underground water levels using ARIMA & 
 ## Contact
 
 - 📧 avaksekhon@gmail.com
-- 💼 [linkedin.com/in/avalvir-kaur-sekhon](https://www.linkedin.com/in/avalvir-kaur-sekhon/)
+- 💼 [linkedin.com/in/avalvir-kaur-sekhon](https://www.linkedin.com/in/aval-s/)
 - 🐙 [github.com/aval-s](https://github.com/aval-s)
