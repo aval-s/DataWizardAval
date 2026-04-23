@@ -110,10 +110,48 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 8rem 3rem 4rem;
+      padding: 8rem 5rem 4rem;
       position: relative;
       overflow: hidden;
     }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    /* Terminal */
+    .terminal-card {
+      background: #0d0d14;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+    }
+    .terminal-bar {
+      background: #1a1a24;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .t-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .t-title { font-family: "Space Mono", monospace; font-size: 0.72rem; color: var(--muted); margin-left: 0.5rem; }
+    .terminal-body { padding: 1.5rem; font-family: "Space Mono", monospace; font-size: 0.78rem; line-height: 1.8; }
+    .t-line { display: block; }
+    .t-spacer { height: 0.6rem; display: block; }
+    .t-prompt { color: var(--accent); margin-right: 0.5rem; }
+    .t-cmd { color: var(--accent2); }
+    .t-out { color: #c8c8d8; padding-left: 1rem; }
+    .t-dim { color: #555566; padding-left: 1rem; }
+    .t-green { color: var(--accent3); }
+    .t-yellow { color: var(--accent2); }
+    .t-blue { color: var(--accent4); }
+    .t-blink { color: var(--accent3); animation: blink 1s step-end infinite; }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
 
     .hero-grid-bg {
       position: absolute;
@@ -244,6 +282,96 @@
       gap: 1rem;
       animation: fadeIn 1.5s 1s ease both;
     }
+    /* Hero two-col layout */
+    #hero { display: grid; grid-template-columns: 1fr 380px; grid-template-rows: auto; align-items: center; column-gap: 3rem; }
+    .hero-eyebrow { grid-column: 1; }
+    h1.hero-name { grid-column: 1; }
+    .hero-tagline { grid-column: 1; }
+    .hero-chips { grid-column: 1; }
+    .hero-cta { grid-column: 1; }
+    .hero-scroll { grid-column: 1 / -1; align-self: end; }
+    .hero-grid-bg, .orb1, .orb2, .orb3 { grid-column: 1 / -1; grid-row: 1 / -1; }
+
+    .hero-panel {
+      grid-column: 2;
+      grid-row: 1 / 6;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-self: center;
+    }
+    .hero-panel-card {
+      background: rgba(26,26,38,0.8);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem 1.6rem;
+      backdrop-filter: blur(20px);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .hero-panel-card:hover { border-color: rgba(255,255,255,0.15); transform: translateX(4px); }
+    .hp-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+    }
+    .hp-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hp-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .hp-dot.green { background: var(--accent3); box-shadow: 0 0 8px var(--accent3); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+    .hp-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+    .hp-bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: 0.7rem;
+    }
+    .hp-bar {
+      flex: 1;
+      height: 5px;
+      background: var(--surface2);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .hp-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent4), var(--accent3));
+      border-radius: 100px;
+      animation: fillBar 1.5s 1s ease-out both;
+    }
+    .hp-bar-pct {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--accent3);
+    }
+    .hp-orgs { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.3rem; }
+    .hp-org {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .hp-org-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-panel { grid-column: 1; grid-row: auto; display: grid; grid-template-columns: 1fr 1fr; }
+    }
+
     .hero-scroll::after {
       content: '';
       display: block;
@@ -751,11 +879,13 @@
     }
 
     /* Responsive */
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
       section { padding: 4rem 1.5rem; }
       #hero { padding: 7rem 1.5rem 4rem; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
       #about { grid-template-columns: 1fr; gap: 3rem; }
       .about-stats { grid-template-columns: 1fr 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
@@ -773,11 +903,11 @@
   <nav>
     <a href="#" class="nav-logo">Aval.dev</a>
     <ul class="nav-links">
-      <!-- <li><a href="#about">About</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li> -->
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
@@ -812,6 +942,37 @@
     </div>
 
     <div class="hero-scroll">Scroll to explore</div>
+
+    <!-- Hero right panel -->
+    <div class="hero-panel">
+      <div class="hero-panel-card" style="animation: fadeUp 0.8s 0.5s ease both;">
+        <div class="hp-label">Currently</div>
+        <div class="hp-value">MDS @ UBC <span class="hp-dot green"></span></div>
+        <div class="hp-sub">Graduating June 2026</div>
+      </div>
+      <div class="hero-panel-card" style="animation: fadeUp 0.8s 0.65s ease both;">
+        <div class="hp-label">Latest project</div>
+        <div class="hp-value">Food-101 Fine-Tuning</div>
+        <div class="hp-sub">ViT · 85.6% · 58K params</div>
+        <div class="hp-bar-wrap">
+          <div class="hp-bar"><div class="hp-bar-fill" style="width:85.6%"></div></div>
+          <span class="hp-bar-pct">85.6%</span>
+        </div>
+      </div>
+      <div class="hero-panel-card" style="animation: fadeUp 0.8s 0.8s ease both;">
+        <div class="hp-label">Experience</div>
+        <div class="hp-orgs">
+          <div class="hp-org"><span class="hp-org-dot" style="background:var(--accent)"></span>Doaba Publications</div>
+          <div class="hp-org"><span class="hp-org-dot" style="background:var(--accent2)"></span>Arctic Glacier Canada</div>
+          <div class="hp-org"><span class="hp-org-dot" style="background:var(--accent4)"></span>Black Eye Technologies</div>
+        </div>
+      </div>
+      <div class="hero-panel-card" style="animation: fadeUp 0.8s 0.95s ease both;">
+        <div class="hp-label">Open to</div>
+        <div class="hp-value" style="font-size:1rem;">Roles across Canada 🇨🇦</div>
+        <div class="hp-sub">Full-time · Data Scientist · ML Engineer</div>
+      </div>
+    </div>
   </div>
 
   <!-- ABOUT -->
@@ -1081,7 +1242,7 @@
     <p>Open to Data Scientist roles across Canada. Always happy to talk about ML, NLP, or fine-tuning strategies that actually work.</p>
     <div class="contact-links">
       <a href="mailto:avaksekhon@gmail.com" class="contact-link primary">✉ avaksekhon@gmail.com</a>
-      <a href="https://www.linkedin.com/in/aval-s/" target="_blank" class="contact-link">LinkedIn ↗</a>
+      <a href="https://www.linkedin.com/in/avalvir-kaur-sekhon/" target="_blank" class="contact-link">LinkedIn ↗</a>
       <a href="https://github.com/aval-s" target="_blank" class="contact-link">GitHub ↗</a>
     </div>
   </section>
